@@ -16,7 +16,6 @@ class _GetStartScreenState extends State<GetStartScreen> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    double imageSize = screenSize.height * 0.18;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -24,17 +23,7 @@ class _GetStartScreenState extends State<GetStartScreen> {
           child: Column(
             children: [
               SizedBox(height: screenSize.height * 0.02,),
-              Container(
-                height: imageSize,
-                width: imageSize,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-                child: Image.network("https://cdn-icons-png.flaticon.com/512/4837/4837259.png",
-                ),
-              ),
+              _buildProfile(),
               SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -85,7 +74,17 @@ class _GetStartScreenState extends State<GetStartScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Hello")
+                  Text("Already have an account?", style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: Colors.grey[400],
+                  ),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/signup');
+                    },
+                    child: Text("Sign In", style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).primaryColor,
+                    ),),
+                  ),
                 ],
               )
             ],
@@ -94,4 +93,21 @@ class _GetStartScreenState extends State<GetStartScreen> {
       ),
     );
   }
+  Widget _buildProfile() {
+    var screenSize = MediaQuery.of(context).size;
+    double imageSize = screenSize.height * 0.18;
+    return Container(
+      height: imageSize,
+      width: imageSize,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.grey[200],
+      ),
+      child: Image.network(
+        "https://cdn-icons-png.flaticon.com/512/4837/4837259.png",
+      ),
+    );
+  }
 }
+
