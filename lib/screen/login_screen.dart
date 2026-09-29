@@ -1,6 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_projects_screen/widget/auth_button_circle.dart';
 
+import '../widget/button.dart';
+import '../widget/line_divider.dart' show lineDivider;
 import '../widget/my_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -99,6 +101,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   return null;
                 },
               ),
+              const SizedBox(height: 10),
+
               Row(
                 children: [
                   Checkbox(
@@ -130,6 +134,38 @@ class _LoginScreenState extends State<LoginScreen> {
                     ).textTheme.bodyLarge?.copyWith(color: Colors.black),
                   ),
                 ],
+              ),
+              const SizedBox(height: 20),
+              Button(title: "Login", route: '/',),
+              const SizedBox(height: 50),
+              lineDivider(),
+              const SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AuthButtonCircle(image: 'https://img.icons8.com/?size=96&id=17949&format=png',),
+                  SizedBox(width: 16,),
+                  AuthButtonCircle(image: "https://img.icons8.com/?size=100&id=30840&format=png&color=000000",),
+                  SizedBox(width: 16,),
+                  AuthButtonCircle(image: "https://img.icons8.com/?size=100&id=13912&format=png&color=000000",),
+                ],
+              ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account?", style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: Colors.grey[400],
+                  ),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/signup');
+                    },
+                    child: Text("Sign In", style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).primaryColor,
+                    ),),
+                  ),
+                ],
               )
             ],
           ),
@@ -141,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _imageLogin() {
     var screenSize = MediaQuery.of(context).size;
     double imageSize = screenSize.height * 0.18;
-    return Container(
+    return SizedBox(
       height: imageSize,
       width: imageSize,
       child: Image.network(

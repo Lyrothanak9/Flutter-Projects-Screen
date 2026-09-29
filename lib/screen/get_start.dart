@@ -86,7 +86,7 @@ class _GetStartScreenState extends State<GetStartScreen> {
                     ),),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

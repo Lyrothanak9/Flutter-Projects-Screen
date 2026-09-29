@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class lineDivider extends StatelessWidget {
+class lineDivider extends StatefulWidget {
   const lineDivider({super.key});
 
+  @override
+  State<lineDivider> createState() => _lineDividerState();
+}
+
+class _lineDividerState extends State<lineDivider> {
   @override
   Widget build(BuildContext context) {
     return Row(
