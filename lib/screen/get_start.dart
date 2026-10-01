@@ -33,7 +33,7 @@ class _GetStartScreenState extends State<GetStartScreen> {
                     children: [
                       Text(
                         "Welcome to Finora",
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.headlineMedium,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 12),
